@@ -8,7 +8,7 @@ PWD := $(shell pwd)
 default:
 	$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) modules
 
-clea:
+clean:
 	rm -rf *.ko
 	rm -rf *.mod.*
 	rm -rf .*.cmd

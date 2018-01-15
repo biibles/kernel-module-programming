@@ -10,7 +10,7 @@ int __init init_hello(void)
 
 void __exit exit_hello(void)
 {
-	printfk(KERN_ALERT "Goodbye World\n");
+	printk(KERN_ALERT "Goodbye World\n");
 }
 
 module_init(init_hello);
