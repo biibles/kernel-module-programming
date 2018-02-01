@@ -47,7 +47,7 @@ static void insert(int data)
 	}
 }
 
-static void delete(int data)
+static int delete(int data)
 {
 	struct Node* p = head;
 
@@ -59,22 +59,32 @@ static void delete(int data)
 		p = p->next;
 	}
 
+	if ( p == NULL )
+		return 0;
+
 	//지우고 싶은 node인 경우 아래를 실행.
 	if ( p == head )
 	{
 		head = head->next;
 		p->next->prev = NULL;
+		kfree(p);
+		return 0;
 	}
 	else if ( p == tail )
 	{
 		tail = tail->prev;
 		p->prev->next = NULL;
+		kfree(p);
+		return 0;
 	}
 	else
 	{
 		p->prev->next = p->next;
 		p->next->prev = p->prev;
+		kfree(p);
+		return 0;
 	}
+	return 0;
 }
 
 static void print(void)
@@ -98,7 +108,7 @@ int init_hello(void)
 	insert(40);
 	print();
 
-	delete(20);
+	delete(50);
 	print();
 
 	return 0;
