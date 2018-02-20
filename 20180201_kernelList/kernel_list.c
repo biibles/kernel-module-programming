@@ -21,20 +21,14 @@ static void insert(int data)
 static void delete(int data)
 {
 
-	struct Node *p;
-	int count = 0;
-	list_for_each_entry(p, &Node_head, list)
+	struct Node *p, *tmp;
+	list_for_each_entry_safe(p, tmp, &Node_head, list)
 	{
-		if (count++ > 100)
-			break;
-
-		printk("p data (%d)\n", p->data);
 		if(p->data == data)
 		{
 			printk("delete data (%d)\n", p->data);
 			list_del(&p->list);
 			kfree(p);
-			break;
 		}
 	}
 }
